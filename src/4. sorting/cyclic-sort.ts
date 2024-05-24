@@ -27,8 +27,36 @@ var missingNumber = function(nums: number[]): number  {
   return ans;
 };
 
+
 function swap(arr: number[], firstIndex: number, secondIndex : number){
   const temp = arr[firstIndex];
   arr[firstIndex] = arr[secondIndex];
   arr[secondIndex] = temp;
 }
+
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ * Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n]    inclusive.
+*/
+var findDuplicate = function(nums: number[]) {
+  let index = 0;
+  while(index < nums.length){
+      const correctIndex = index + 1;
+      if(correctIndex !== nums[index] 
+          && nums[index] !== nums[nums[index] -1]) {
+              swap(nums, index, nums[index] - 1);
+          }
+      else{
+          ++index;
+      }
+  }
+  let ans = -1;
+  for(let i=0;i<nums.length;i++){
+      if(nums[i] !== i + 1){
+          return nums[i];
+      }
+  }
+  return ans;
+};
