@@ -1,6 +1,6 @@
 import readline, { Interface } from "node:readline";
 
-class Node {
+export class Node {
   value: any;
   left: Node | null;
   right: Node | null;
@@ -11,7 +11,7 @@ class Node {
   }
 }
 
-class BinaryTree {
+export class BinaryTree {
   root: Node | null;
   rl: Interface;
   constructor() {
@@ -72,6 +72,13 @@ class BinaryTree {
       this.print(node.left);
       this.print(node.right);
     }
+  }
+
+  height(node = this.root): number {
+    if (node == null) return 0;
+    const leftHeight = this.height(node.left);
+    const rightHeight = this.height(node.right);
+    return Math.max(leftHeight + 1, rightHeight + 1);
   }
 }
 

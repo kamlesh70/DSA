@@ -1,4 +1,4 @@
-class DynamicQueue {
+export class DynamicQueue {
   private queue: Record<number, any>;
   private front: number;
   private rear: number;
@@ -14,12 +14,10 @@ class DynamicQueue {
     this.queue[this.front] = value;
     ++this.front;
     ++this.size;
-    console.log(value, " inserted");
   }
 
   deQueue() {
     if (this.size === 0) {
-      console.log("Queue empty");
       return;
     }
 
